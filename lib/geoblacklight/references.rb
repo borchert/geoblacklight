@@ -103,6 +103,5 @@ module Geoblacklight
         super
       end
     end
-
   end
 end

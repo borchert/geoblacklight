@@ -22,7 +22,7 @@ module Geoblacklight
     # Lookups the type from the Constants::URI using the reference's URI
     # @return [Symbol]
     def type
-      Geoblacklight::Constants::URI.key(base_uri)
+      Geoblacklight::Constants::URI.key(normalized_uri)
     end
 
     ##
@@ -33,20 +33,26 @@ module Geoblacklight
     end
 
     ##
+    # The URI fragment (#...)
+    # @return [String]
+    def fragment
+      uri[/(?:#)(.+)/, 1] unless uri.nil?
+    end
+
+    private
+
+    ##
     # The URI used for this instance's creation
     # @return [String]
     def uri
       @reference[0]
     end
 
-    private
-
     ##
     # The URI without fragment (#...)
     # @return [String]
-    def base_uri
-      uri.sub(/#(.+)/,'')
+    def normalized_uri
+      uri.sub(/#(.+)/, '') unless uri.nil?
     end
-
   end
 end

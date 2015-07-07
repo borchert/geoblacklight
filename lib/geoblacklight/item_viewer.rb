@@ -14,10 +14,9 @@ module Geoblacklight
       viewer_preference.values.first.to_s
     end
 
-    def viewer_uri
-      byebug
+    def viewer_fragment
       return '' if viewer_preference.nil?
-      self.send(viewer_preference.keys.first).uri
+      send(viewer_preference.keys.first).fragment
     end
 
     def wms
