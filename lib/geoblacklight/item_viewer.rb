@@ -14,6 +14,12 @@ module Geoblacklight
       viewer_preference.values.first.to_s
     end
 
+    def viewer_uri
+      byebug
+      return '' if viewer_preference.nil?
+      self.send(viewer_preference.keys.first).uri
+    end
+
     def wms
       @references.wms
     end

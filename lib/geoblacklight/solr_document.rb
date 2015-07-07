@@ -8,6 +8,7 @@ module Geoblacklight
     delegate :download_types, to: :references
     delegate :viewer_protocol, to: :item_viewer
     delegate :viewer_endpoint, to: :item_viewer
+    delegate :viewer_uri, to: :item_viewer
 
     def available?
       public? || same_institution?
