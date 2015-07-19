@@ -1,6 +1,6 @@
 //= require geoblacklight/viewers/esri
 
-GeoBlacklight.Viewer.Featureservice = GeoBlacklight.Viewer.Esri.extend({
+GeoBlacklight.Viewer.FeatureLayer = GeoBlacklight.Viewer.Esri.extend({
 
   // default feature styles
   defaultStyles: {
@@ -13,7 +13,7 @@ GeoBlacklight.Viewer.Featureservice = GeoBlacklight.Viewer.Esri.extend({
   getPreviewLayer: function() {
 
     // set esri leaflet options
-    var options = { opacity: 1 }
+    var options = { opacity: 1 };
 
     // set default style
     options.style = this.getFeatureStyle();
@@ -31,7 +31,9 @@ GeoBlacklight.Viewer.Featureservice = GeoBlacklight.Viewer.Esri.extend({
     var _this = this;
 
     // lookup style hash based on layer geometry type and return function
-    return function(feature) { return _this.defaultStyles[_this.layerInfo.geometryType]; };
+    return function(feature) { 
+      return _this.defaultStyles[_this.layerInfo.geometryType]; 
+    };
   },
 
   setupInspection: function(featureLayer) {
@@ -49,8 +51,8 @@ GeoBlacklight.Viewer.Featureservice = GeoBlacklight.Viewer.Esri.extend({
         if (error) {
           _this.appendErrorMessage();
         } else {
-          _this.populateAttibuteTable(featureCollection.features[0])
-        };
+          _this.populateAttibuteTable(featureCollection.features[0]);
+        }
       });
     });
   }

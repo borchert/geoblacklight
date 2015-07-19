@@ -71,7 +71,12 @@ module GeoblacklightHelper
   end
 
   def show_attribute_table?
-    return true if document_available? && @document.viewer_protocol == 'wms'
+    if document_available?
+      case @document.viewer_protocol
+      when 'wms', 'tiled_map_layer', 'dynamic_map_layer', 'feature_layer'
+        return true
+      end
+    end
   end
 
   ##
